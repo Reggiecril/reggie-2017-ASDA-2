@@ -1,6 +1,6 @@
 ﻿namespace Bug_Tracker
 {
-    partial class main
+    partial class developer
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // main
+            // developer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 445);
-            this.Name = "main";
-            this.Text = "main";
+            this.ClientSize = new System.Drawing.Size(761, 412);
+            this.Name = "developer";
+            this.Text = "developer";
             this.ResumeLayout(false);
 
         }
