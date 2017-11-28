@@ -32,12 +32,30 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_logout = new System.Windows.Forms.Button();
             this.panel_tester = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_testerAdd = new System.Windows.Forms.Panel();
+            this.txt_cause = new System.Windows.Forms.TextBox();
+            this.txt_bugSummary = new System.Windows.Forms.TextBox();
+            this.cmb_priority = new System.Windows.Forms.ComboBox();
+            this.txt_bugTitle = new System.Windows.Forms.TextBox();
+            this.txt_project = new System.Windows.Forms.TextBox();
+            this.btn_testerNew = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btn_testerAddBug = new System.Windows.Forms.Button();
+            this.btn_testerMy = new System.Windows.Forms.Button();
+            this.btn_testerAll = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmb_state = new System.Windows.Forms.ComboBox();
+            this.panel_allTestedBug = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel_tester.SuspendLayout();
+            this.panel_testerAdd.SuspendLayout();
+            this.panel_allTestedBug.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -71,52 +89,174 @@
             this.panel_tester.BackColor = System.Drawing.Color.Transparent;
             this.panel_tester.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_tester.BackgroundImage")));
             this.panel_tester.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel_tester.Controls.Add(this.panel1);
-            this.panel_tester.Controls.Add(this.button3);
-            this.panel_tester.Controls.Add(this.button2);
-            this.panel_tester.Controls.Add(this.button1);
+            this.panel_tester.Controls.Add(this.panel_allTestedBug);
+            this.panel_tester.Controls.Add(this.panel_testerAdd);
+            this.panel_tester.Controls.Add(this.btn_testerAddBug);
+            this.panel_tester.Controls.Add(this.btn_testerMy);
+            this.panel_tester.Controls.Add(this.btn_testerAll);
             this.panel_tester.Location = new System.Drawing.Point(0, 92);
             this.panel_tester.Name = "panel_tester";
             this.panel_tester.Size = new System.Drawing.Size(781, 455);
             this.panel_tester.TabIndex = 5;
             // 
-            // button2
+            // panel_testerAdd
             // 
-            this.button2.Location = new System.Drawing.Point(163, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 90);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "My Tested Bug";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.panel_testerAdd.BackColor = System.Drawing.Color.White;
+            this.panel_testerAdd.Controls.Add(this.cmb_state);
+            this.panel_testerAdd.Controls.Add(this.txt_cause);
+            this.panel_testerAdd.Controls.Add(this.txt_bugSummary);
+            this.panel_testerAdd.Controls.Add(this.cmb_priority);
+            this.panel_testerAdd.Controls.Add(this.txt_bugTitle);
+            this.panel_testerAdd.Controls.Add(this.txt_project);
+            this.panel_testerAdd.Controls.Add(this.btn_testerNew);
+            this.panel_testerAdd.Controls.Add(this.label9);
+            this.panel_testerAdd.Controls.Add(this.label8);
+            this.panel_testerAdd.Controls.Add(this.label7);
+            this.panel_testerAdd.Controls.Add(this.label5);
+            this.panel_testerAdd.Controls.Add(this.label4);
+            this.panel_testerAdd.Controls.Add(this.label3);
+            this.panel_testerAdd.Location = new System.Drawing.Point(12, 91);
+            this.panel_testerAdd.Name = "panel_testerAdd";
+            this.panel_testerAdd.Size = new System.Drawing.Size(754, 349);
+            this.panel_testerAdd.TabIndex = 3;
             // 
-            // button1
+            // txt_cause
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(12, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 90);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "All Tested Bug";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.txt_cause.Location = new System.Drawing.Point(522, 157);
+            this.txt_cause.Multiline = true;
+            this.txt_cause.Name = "txt_cause";
+            this.txt_cause.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_cause.Size = new System.Drawing.Size(192, 84);
+            this.txt_cause.TabIndex = 14;
             // 
-            // button3
+            // txt_bugSummary
             // 
-            this.button3.Location = new System.Drawing.Point(314, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 90);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Add Bug";
-            this.button3.UseVisualStyleBackColor = true;
+            this.txt_bugSummary.Location = new System.Drawing.Point(180, 160);
+            this.txt_bugSummary.Multiline = true;
+            this.txt_bugSummary.Name = "txt_bugSummary";
+            this.txt_bugSummary.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_bugSummary.Size = new System.Drawing.Size(212, 84);
+            this.txt_bugSummary.TabIndex = 13;
             // 
-            // panel1
+            // cmb_priority
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(12, 91);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(754, 349);
-            this.panel1.TabIndex = 3;
+            this.cmb_priority.FormattingEnabled = true;
+            this.cmb_priority.Items.AddRange(new object[] {
+            "1",
+            "1"});
+            this.cmb_priority.Location = new System.Drawing.Point(522, 33);
+            this.cmb_priority.Name = "cmb_priority";
+            this.cmb_priority.Size = new System.Drawing.Size(192, 26);
+            this.cmb_priority.TabIndex = 11;
+            // 
+            // txt_bugTitle
+            // 
+            this.txt_bugTitle.Location = new System.Drawing.Point(180, 92);
+            this.txt_bugTitle.Name = "txt_bugTitle";
+            this.txt_bugTitle.Size = new System.Drawing.Size(212, 28);
+            this.txt_bugTitle.TabIndex = 10;
+            // 
+            // txt_project
+            // 
+            this.txt_project.Location = new System.Drawing.Point(180, 33);
+            this.txt_project.Name = "txt_project";
+            this.txt_project.Size = new System.Drawing.Size(212, 28);
+            this.txt_project.TabIndex = 8;
+            // 
+            // btn_testerNew
+            // 
+            this.btn_testerNew.Location = new System.Drawing.Point(302, 289);
+            this.btn_testerNew.Name = "btn_testerNew";
+            this.btn_testerNew.Size = new System.Drawing.Size(136, 45);
+            this.btn_testerNew.TabIndex = 7;
+            this.btn_testerNew.Text = "Add";
+            this.btn_testerNew.UseVisualStyleBackColor = true;
+            this.btn_testerNew.Click += new System.EventHandler(this.btn_testerNew_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(38, 160);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(125, 18);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Bug Summary *";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(418, 36);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(98, 18);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Priority *";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(418, 102);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(71, 18);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "State *";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(418, 160);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 18);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Cause *";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(38, 95);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 18);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Bug Title *";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(38, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 18);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Project *";
+            // 
+            // btn_testerAddBug
+            // 
+            this.btn_testerAddBug.Location = new System.Drawing.Point(314, 4);
+            this.btn_testerAddBug.Name = "btn_testerAddBug";
+            this.btn_testerAddBug.Size = new System.Drawing.Size(120, 90);
+            this.btn_testerAddBug.TabIndex = 2;
+            this.btn_testerAddBug.Text = "Add Bug";
+            this.btn_testerAddBug.UseVisualStyleBackColor = true;
+            this.btn_testerAddBug.Click += new System.EventHandler(this.btn_testerAddBug_Click);
+            // 
+            // btn_testerMy
+            // 
+            this.btn_testerMy.Location = new System.Drawing.Point(163, 4);
+            this.btn_testerMy.Name = "btn_testerMy";
+            this.btn_testerMy.Size = new System.Drawing.Size(120, 90);
+            this.btn_testerMy.TabIndex = 0;
+            this.btn_testerMy.Text = "My Tested Bug";
+            this.btn_testerMy.UseVisualStyleBackColor = true;
+            this.btn_testerMy.Click += new System.EventHandler(this.btn_testerMy_Click);
+            // 
+            // btn_testerAll
+            // 
+            this.btn_testerAll.BackColor = System.Drawing.Color.Transparent;
+            this.btn_testerAll.Location = new System.Drawing.Point(12, 3);
+            this.btn_testerAll.Name = "btn_testerAll";
+            this.btn_testerAll.Size = new System.Drawing.Size(120, 90);
+            this.btn_testerAll.TabIndex = 0;
+            this.btn_testerAll.Text = "All Tested Bug";
+            this.btn_testerAll.UseVisualStyleBackColor = false;
+            this.btn_testerAll.Click += new System.EventHandler(this.btn_testerAll_Click);
             // 
             // label2
             // 
@@ -129,6 +269,33 @@
             this.label2.Size = new System.Drawing.Size(141, 54);
             this.label2.TabIndex = 6;
             this.label2.Text = "Tester";
+            // 
+            // cmb_state
+            // 
+            this.cmb_state.FormattingEnabled = true;
+            this.cmb_state.Location = new System.Drawing.Point(522, 99);
+            this.cmb_state.Name = "cmb_state";
+            this.cmb_state.Size = new System.Drawing.Size(192, 26);
+            this.cmb_state.TabIndex = 15;
+            // 
+            // panel_allTestedBug
+            // 
+            this.panel_allTestedBug.BackColor = System.Drawing.Color.White;
+            this.panel_allTestedBug.Controls.Add(this.dataGridView1);
+            this.panel_allTestedBug.Location = new System.Drawing.Point(12, 91);
+            this.panel_allTestedBug.Name = "panel_allTestedBug";
+            this.panel_allTestedBug.Size = new System.Drawing.Size(754, 349);
+            this.panel_allTestedBug.TabIndex = 4;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 30;
+            this.dataGridView1.Size = new System.Drawing.Size(754, 349);
+            this.dataGridView1.TabIndex = 0;
             // 
             // tester
             // 
@@ -143,6 +310,10 @@
             this.Name = "tester";
             this.Text = "Bug Tracker System-Tester";
             this.panel_tester.ResumeLayout(false);
+            this.panel_testerAdd.ResumeLayout(false);
+            this.panel_testerAdd.PerformLayout();
+            this.panel_allTestedBug.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,10 +324,25 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_logout;
         private System.Windows.Forms.Panel panel_tester;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btn_testerAll;
+        private System.Windows.Forms.Button btn_testerMy;
+        private System.Windows.Forms.Button btn_testerAddBug;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel_testerAdd;
+        private System.Windows.Forms.Button btn_testerNew;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txt_bugTitle;
+        private System.Windows.Forms.TextBox txt_project;
+        private System.Windows.Forms.ComboBox cmb_priority;
+        private System.Windows.Forms.TextBox txt_bugSummary;
+        private System.Windows.Forms.TextBox txt_cause;
+        private System.Windows.Forms.ComboBox cmb_state;
+        private System.Windows.Forms.Panel panel_allTestedBug;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

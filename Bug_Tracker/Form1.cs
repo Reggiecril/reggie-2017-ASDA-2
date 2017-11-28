@@ -16,6 +16,7 @@ namespace Bug_Tracker
         public Login()
         {
             InitializeComponent();
+           
         }
 
         private void btn_user_login_Click(object sender, EventArgs e)
