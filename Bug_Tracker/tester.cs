@@ -16,10 +16,17 @@ namespace Bug_Tracker
        
         
         string connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Reggie\Documents\Bug_Tracker_Table.mdf;Integrated Security=True;Connect Timeout=30";
-        public tester()
+        public tester(string username)
+        {
+            InitializeComponent();
+            this.label_username.Text = username;
+            load();
+
+        }
+
+        public void load()
         {
             
-            InitializeComponent();
             panel_allTestedBug.Show();
             panel_testerAdd.Hide();
             panel_myTestedBug.Hide();
@@ -31,8 +38,6 @@ namespace Bug_Tracker
                 da.Fill(dt);
                 datagv_allTestedBug.DataSource = dt;
             }
-
-
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
@@ -96,11 +101,12 @@ namespace Bug_Tracker
                 con.Open();
                 DateTime myDateTime = DateTime.Now;
                 string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
-                string newcom = "insert into bug (project,bugTitle,cause,bugSummary,priority,state,start_date) VALUES('" + txt_project + "','" + txt_bugTitle + "','" + txt_cause + "','" + txt_bugSummary + "','" + cmb_priority + "','" + cmb_state + "','" + sqlFormattedDate + "')";
+                string newcom = "insert into bug (project,bugTitle,cause,bugSummary,priority,state,start_date,tester) VALUES('" + txt_project + "','" + txt_bugTitle + "','" + txt_cause + "','" + txt_bugSummary + "','" + cmb_priority + "','" + cmb_state + "','" + sqlFormattedDate + "','"+label_username.Text+"')";
                 SqlCommand cmd = new SqlCommand(newcom, con);
                 cmd.ExecuteNonQuery();
-                panel_testerAdd.Hide();
+                load();
             }
+
         }
     }
 }

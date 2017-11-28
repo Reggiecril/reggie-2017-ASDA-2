@@ -32,7 +32,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_logout = new System.Windows.Forms.Button();
             this.panel_tester = new System.Windows.Forms.Panel();
+            this.label_username = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel_myTestedBug = new System.Windows.Forms.Panel();
+            this.datagv_myTestedBug = new System.Windows.Forms.DataGridView();
+            this.panel_allTestedBug = new System.Windows.Forms.Panel();
+            this.datagv_allTestedBug = new System.Windows.Forms.DataGridView();
             this.panel_testerAdd = new System.Windows.Forms.Panel();
+            this.cmb_state = new System.Windows.Forms.ComboBox();
             this.txt_cause = new System.Windows.Forms.TextBox();
             this.txt_bugSummary = new System.Windows.Forms.TextBox();
             this.cmb_priority = new System.Windows.Forms.ComboBox();
@@ -49,17 +56,12 @@
             this.btn_testerMy = new System.Windows.Forms.Button();
             this.btn_testerAll = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmb_state = new System.Windows.Forms.ComboBox();
-            this.panel_allTestedBug = new System.Windows.Forms.Panel();
-            this.datagv_allTestedBug = new System.Windows.Forms.DataGridView();
-            this.panel_myTestedBug = new System.Windows.Forms.Panel();
-            this.datagv_myTestedBug = new System.Windows.Forms.DataGridView();
             this.panel_tester.SuspendLayout();
-            this.panel_testerAdd.SuspendLayout();
-            this.panel_allTestedBug.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagv_allTestedBug)).BeginInit();
             this.panel_myTestedBug.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagv_myTestedBug)).BeginInit();
+            this.panel_allTestedBug.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datagv_allTestedBug)).BeginInit();
+            this.panel_testerAdd.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -93,6 +95,8 @@
             this.panel_tester.BackColor = System.Drawing.Color.Gray;
             this.panel_tester.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel_tester.BackgroundImage")));
             this.panel_tester.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel_tester.Controls.Add(this.label_username);
+            this.panel_tester.Controls.Add(this.label6);
             this.panel_tester.Controls.Add(this.panel_myTestedBug);
             this.panel_tester.Controls.Add(this.panel_allTestedBug);
             this.panel_tester.Controls.Add(this.panel_testerAdd);
@@ -103,6 +107,64 @@
             this.panel_tester.Name = "panel_tester";
             this.panel_tester.Size = new System.Drawing.Size(781, 455);
             this.panel_tester.TabIndex = 5;
+            // 
+            // label_username
+            // 
+            this.label_username.AutoSize = true;
+            this.label_username.BackColor = System.Drawing.Color.Transparent;
+            this.label_username.Font = new System.Drawing.Font("宋体", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_username.Location = new System.Drawing.Point(506, 36);
+            this.label_username.Name = "label_username";
+            this.label_username.Size = new System.Drawing.Size(58, 22);
+            this.label_username.TabIndex = 7;
+            this.label_username.Text = "name";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("宋体", 10F);
+            this.label6.Location = new System.Drawing.Point(506, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 20);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Tester:";
+            // 
+            // panel_myTestedBug
+            // 
+            this.panel_myTestedBug.BackColor = System.Drawing.Color.White;
+            this.panel_myTestedBug.Controls.Add(this.datagv_myTestedBug);
+            this.panel_myTestedBug.Location = new System.Drawing.Point(12, 91);
+            this.panel_myTestedBug.Name = "panel_myTestedBug";
+            this.panel_myTestedBug.Size = new System.Drawing.Size(754, 349);
+            this.panel_myTestedBug.TabIndex = 5;
+            // 
+            // datagv_myTestedBug
+            // 
+            this.datagv_myTestedBug.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagv_myTestedBug.Location = new System.Drawing.Point(13, 9);
+            this.datagv_myTestedBug.Name = "datagv_myTestedBug";
+            this.datagv_myTestedBug.RowTemplate.Height = 30;
+            this.datagv_myTestedBug.Size = new System.Drawing.Size(727, 325);
+            this.datagv_myTestedBug.TabIndex = 0;
+            // 
+            // panel_allTestedBug
+            // 
+            this.panel_allTestedBug.BackColor = System.Drawing.Color.White;
+            this.panel_allTestedBug.Controls.Add(this.datagv_allTestedBug);
+            this.panel_allTestedBug.Location = new System.Drawing.Point(12, 91);
+            this.panel_allTestedBug.Name = "panel_allTestedBug";
+            this.panel_allTestedBug.Size = new System.Drawing.Size(754, 349);
+            this.panel_allTestedBug.TabIndex = 4;
+            // 
+            // datagv_allTestedBug
+            // 
+            this.datagv_allTestedBug.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagv_allTestedBug.Location = new System.Drawing.Point(13, 9);
+            this.datagv_allTestedBug.Name = "datagv_allTestedBug";
+            this.datagv_allTestedBug.RowTemplate.Height = 30;
+            this.datagv_allTestedBug.Size = new System.Drawing.Size(727, 325);
+            this.datagv_allTestedBug.TabIndex = 0;
             // 
             // panel_testerAdd
             // 
@@ -124,6 +186,14 @@
             this.panel_testerAdd.Name = "panel_testerAdd";
             this.panel_testerAdd.Size = new System.Drawing.Size(754, 349);
             this.panel_testerAdd.TabIndex = 3;
+            // 
+            // cmb_state
+            // 
+            this.cmb_state.FormattingEnabled = true;
+            this.cmb_state.Location = new System.Drawing.Point(522, 99);
+            this.cmb_state.Name = "cmb_state";
+            this.cmb_state.Size = new System.Drawing.Size(192, 26);
+            this.cmb_state.TabIndex = 15;
             // 
             // txt_cause
             // 
@@ -284,50 +354,6 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Tester";
             // 
-            // cmb_state
-            // 
-            this.cmb_state.FormattingEnabled = true;
-            this.cmb_state.Location = new System.Drawing.Point(522, 99);
-            this.cmb_state.Name = "cmb_state";
-            this.cmb_state.Size = new System.Drawing.Size(192, 26);
-            this.cmb_state.TabIndex = 15;
-            // 
-            // panel_allTestedBug
-            // 
-            this.panel_allTestedBug.BackColor = System.Drawing.Color.White;
-            this.panel_allTestedBug.Controls.Add(this.datagv_allTestedBug);
-            this.panel_allTestedBug.Location = new System.Drawing.Point(12, 91);
-            this.panel_allTestedBug.Name = "panel_allTestedBug";
-            this.panel_allTestedBug.Size = new System.Drawing.Size(754, 349);
-            this.panel_allTestedBug.TabIndex = 4;
-            // 
-            // datagv_allTestedBug
-            // 
-            this.datagv_allTestedBug.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagv_allTestedBug.Location = new System.Drawing.Point(13, 9);
-            this.datagv_allTestedBug.Name = "datagv_allTestedBug";
-            this.datagv_allTestedBug.RowTemplate.Height = 30;
-            this.datagv_allTestedBug.Size = new System.Drawing.Size(727, 325);
-            this.datagv_allTestedBug.TabIndex = 0;
-            // 
-            // panel_myTestedBug
-            // 
-            this.panel_myTestedBug.BackColor = System.Drawing.Color.White;
-            this.panel_myTestedBug.Controls.Add(this.datagv_myTestedBug);
-            this.panel_myTestedBug.Location = new System.Drawing.Point(12, 91);
-            this.panel_myTestedBug.Name = "panel_myTestedBug";
-            this.panel_myTestedBug.Size = new System.Drawing.Size(754, 349);
-            this.panel_myTestedBug.TabIndex = 5;
-            // 
-            // datagv_myTestedBug
-            // 
-            this.datagv_myTestedBug.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagv_myTestedBug.Location = new System.Drawing.Point(13, 9);
-            this.datagv_myTestedBug.Name = "datagv_myTestedBug";
-            this.datagv_myTestedBug.RowTemplate.Height = 30;
-            this.datagv_myTestedBug.Size = new System.Drawing.Size(727, 325);
-            this.datagv_myTestedBug.TabIndex = 0;
-            // 
             // tester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -341,12 +367,13 @@
             this.Name = "tester";
             this.Text = "Bug Tracker System-Tester";
             this.panel_tester.ResumeLayout(false);
-            this.panel_testerAdd.ResumeLayout(false);
-            this.panel_testerAdd.PerformLayout();
-            this.panel_allTestedBug.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.datagv_allTestedBug)).EndInit();
+            this.panel_tester.PerformLayout();
             this.panel_myTestedBug.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.datagv_myTestedBug)).EndInit();
+            this.panel_allTestedBug.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.datagv_allTestedBug)).EndInit();
+            this.panel_testerAdd.ResumeLayout(false);
+            this.panel_testerAdd.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,5 +406,7 @@
         private System.Windows.Forms.DataGridView datagv_allTestedBug;
         private System.Windows.Forms.Panel panel_myTestedBug;
         private System.Windows.Forms.DataGridView datagv_myTestedBug;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label_username;
     }
 }
