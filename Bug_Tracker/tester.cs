@@ -13,14 +13,15 @@ namespace Bug_Tracker
 {
     public partial class tester : Form
     {
-       
-        
         string connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Reggie\Documents\Bug_Tracker_Table.mdf;Integrated Security=True;Connect Timeout=30";
+        
         public tester(string username)
         {
+
             InitializeComponent();
             this.label_username.Text = username;
             load();
+
 
         }
 
@@ -101,7 +102,7 @@ namespace Bug_Tracker
                 con.Open();
                 DateTime myDateTime = DateTime.Now;
                 string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
-                string newcom = "insert into bug (project,bugTitle,cause,bugSummary,priority,state,start_date,tester) VALUES('" + txt_project + "','" + txt_bugTitle + "','" + txt_cause + "','" + txt_bugSummary + "','" + cmb_priority + "','" + cmb_state + "','" + sqlFormattedDate + "','"+label_username.Text+"')";
+                string newcom = "insert into bug (project,bugTitle,cause,bugSummary,priority,state,start_date,tester) VALUES('" + txt_project.Text + "','" + txt_bugTitle.Text + "','" + txt_cause.Text + "','" + txt_bugSummary.Text + "','" + cmb_priority.Text + "','" + label_testState.Text + "','" + sqlFormattedDate + "','"+label_username.Text+"')";
                 SqlCommand cmd = new SqlCommand(newcom, con);
                 cmd.ExecuteNonQuery();
                 load();
