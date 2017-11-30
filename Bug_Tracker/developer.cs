@@ -177,7 +177,7 @@ namespace Bug_Tracker
                 var cell = row.Cells[0].Value;
                 if (cell != null)
                 {
-                    comboBox3.Items.Add(row.Cells[0].Value.ToString());
+                    comboBox4.Items.Add(row.Cells[0].Value.ToString());
                 }
             }
         }
