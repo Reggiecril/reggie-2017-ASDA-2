@@ -38,6 +38,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +51,7 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(0, 92);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(955, 557);
@@ -154,6 +156,18 @@
             this.comboBox2.Size = new System.Drawing.Size(225, 46);
             this.comboBox2.TabIndex = 7;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Arial Unicode MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Info;
+            this.label3.Location = new System.Drawing.Point(793, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 38);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "name";
+            // 
             // developer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -167,6 +181,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "developer";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,5 +198,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label3;
     }
 }
