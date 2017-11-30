@@ -26,6 +26,10 @@ namespace Bug_Tracker
 
         public void load()
         {
+
+            btn_checkBugs.BackColor = Color.White;
+            panel_checkBugs.Show();
+            panel_assignBug.Hide();
             this.comboBox1.Text = "All Bugs";
             this.comboBox2.Text = "All";
             using (SqlConnection con = new SqlConnection(connection))
@@ -80,6 +84,70 @@ namespace Bug_Tracker
                     dataGridView1.DataSource = dt;
                 }
                 
+            }
+        }
+
+        private void btn_checkBugs_Click(object sender, EventArgs e)
+        {
+            btn_checkBugs.BackColor = Color.White;
+            btn_assignBug.BackColor = SystemColors.Info;
+            btn_completeBug.BackColor = SystemColors.Info;
+            panel_checkBugs.Show();
+            panel_assignBug.Hide();
+            using (SqlConnection con = new SqlConnection(connection))
+            {
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter("Select * FROM bug", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+        }
+
+        private void btn_assignBug_Click(object sender, EventArgs e)
+        {
+            btn_checkBugs.BackColor = SystemColors.Info;
+            btn_assignBug.BackColor = Color.White;
+            btn_completeBug.BackColor = SystemColors.Info;
+            panel_checkBugs.Hide();
+            panel_assignBug.Show();
+
+            using (SqlConnection con = new SqlConnection(connection))
+            {
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter("Select * FROM bug where developer = '" + this.label3.Text + "' and state = 'uploaded' ", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView2.DataSource = dt;
+            }
+
+            foreach(DataGridViewRow row in dataGridView2.Rows)
+            {
+                var cell = row.Cells[0].Value;
+                if (cell != null)
+                {
+                    comboBox3.Items.Add(row.Cells[0].Value.ToString());
+                }
+            }
+        }
+
+        private void btn_selectToAssign_Click(object sender, EventArgs e)
+        {
+            if (comboBox3.Text != "")
+            {
+                using (SqlConnection con = new SqlConnection(connection))
+                {
+                    con.Open();
+                    DateTime myDateTime = DateTime.Now;
+                    string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
+                    string newcom = "UPDATE bug SET state = 'Assigned' WHERE BugID = '"+comboBox3.Text+"'";
+                    SqlCommand cmd = new SqlCommand(newcom, con);
+                    cmd.ExecuteNonQuery();
+                    load();
+                }
+            }
+            else
+            {
             }
         }
     }
