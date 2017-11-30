@@ -29,12 +29,12 @@ namespace Bug_Tracker
                 SqlDataAdapter da = new SqlDataAdapter("Select name From [user] where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "'", con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                this.Hide();
-                    tester tester = new tester("2");
-                    tester.Show();
+                
                 if (dt.Rows.Count == 1)
                 {
-                    
+                    this.Hide();
+                    tester tester = new tester(dt.Rows[0][0].ToString());
+                    tester.Show();
                 }
                 else
                 {
@@ -48,19 +48,21 @@ namespace Bug_Tracker
         {
             using (SqlConnection con = new SqlConnection(connection))
             {
-                SqlDataAdapter da = new SqlDataAdapter("Select Count(*) From [developer] where EMAIL = '" + textBox1.Text + "' and PASSWORD= '" + textBox2.Text + "'", con);
+                SqlDataAdapter da = new SqlDataAdapter("Select name From [developer] where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "'", con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                if (dt.Rows[0][0].ToString() == "1")
-                {
-                    this.Hide();
-                    developer developer = new developer();
+                this.Hide();
+                    developer developer = new developer("reggie");
                     developer.Show();
+                if (dt.Rows.Count == 1)
+                {
+                    
                 }
                 else
                 {
                     MessageBox.Show("Please Check Your e-mail or password");
                 }
+
             }
         }
     }

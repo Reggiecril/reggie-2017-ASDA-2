@@ -83,9 +83,11 @@
             // 
             // textBox2
             // 
+            this.textBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBox2.Font = new System.Drawing.Font("宋体", 20F);
             this.textBox2.Location = new System.Drawing.Point(289, 264);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(243, 53);
             this.textBox2.TabIndex = 4;
             // 

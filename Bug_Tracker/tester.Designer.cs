@@ -172,7 +172,7 @@
             this.label_testState.Name = "label_testState";
             this.label_testState.Size = new System.Drawing.Size(62, 18);
             this.label_testState.TabIndex = 15;
-            this.label_testState.Text = "Upload";
+            this.label_testState.Text = "Uploaded";
             // 
             // txt_cause
             // 
@@ -398,6 +398,7 @@
             this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.label1);
             this.Name = "tester";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bug Tracker System-Tester";
             this.panel_testerAdd.ResumeLayout(false);
             this.panel_testerAdd.PerformLayout();
