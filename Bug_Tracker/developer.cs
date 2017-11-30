@@ -30,6 +30,7 @@ namespace Bug_Tracker
             btn_checkBugs.BackColor = Color.White;
             panel_checkBugs.Show();
             panel_assignBug.Hide();
+            panel_completeBug.Hide();
             this.comboBox1.Text = "All Bugs";
             this.comboBox2.Text = "All";
             using (SqlConnection con = new SqlConnection(connection))
@@ -94,6 +95,7 @@ namespace Bug_Tracker
             btn_completeBug.BackColor = SystemColors.Info;
             panel_checkBugs.Show();
             panel_assignBug.Hide();
+            panel_completeBug.Hide();
             using (SqlConnection con = new SqlConnection(connection))
             {
                 con.Open();
@@ -106,16 +108,18 @@ namespace Bug_Tracker
 
         private void btn_assignBug_Click(object sender, EventArgs e)
         {
+            comboBox3.Items.Clear();
             btn_checkBugs.BackColor = SystemColors.Info;
             btn_assignBug.BackColor = Color.White;
             btn_completeBug.BackColor = SystemColors.Info;
             panel_checkBugs.Hide();
             panel_assignBug.Show();
+            panel_completeBug.Hide();
 
             using (SqlConnection con = new SqlConnection(connection))
             {
                 con.Open();
-                SqlDataAdapter da = new SqlDataAdapter("Select * FROM bug where developer = '" + this.label3.Text + "' and state = 'uploaded' ", con);
+                SqlDataAdapter da = new SqlDataAdapter("Select * FROM bug where developer = '" + this.label3.Text + "' and state = 'Uploaded' ", con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dataGridView2.DataSource = dt;
@@ -140,7 +144,7 @@ namespace Bug_Tracker
                     con.Open();
                     DateTime myDateTime = DateTime.Now;
                     string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
-                    string newcom = "UPDATE bug SET state = 'Assigned' WHERE BugID = '"+comboBox3.Text+"'";
+                    string newcom = "UPDATE bug SET state = 'Assigned',process_date = '"+sqlFormattedDate+"' WHERE BugID = '" +comboBox3.Text+"'";
                     SqlCommand cmd = new SqlCommand(newcom, con);
                     cmd.ExecuteNonQuery();
                     load();
@@ -150,6 +154,48 @@ namespace Bug_Tracker
             {
 
                 MessageBox.Show("You can not assign nothing!");
+            }
+        }
+
+        private void btn_completeBug_Click(object sender, EventArgs e)
+        {
+            btn_checkBugs.BackColor = SystemColors.Info;
+            btn_assignBug.BackColor = SystemColors.Info;
+            btn_completeBug.BackColor = Color.White;
+            panel_checkBugs.Hide();
+            panel_assignBug.Hide();
+            panel_completeBug.Show();
+            using (SqlConnection con = new SqlConnection(connection))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("Select * FROM bug where developer = '" + this.label3.Text + "' and state = 'Assigned' ", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView3.DataSource = dt;
+            }
+            foreach (DataGridViewRow row in dataGridView3.Rows)
+            {
+                var cell = row.Cells[0].Value;
+                if (cell != null)
+                {
+                    comboBox3.Items.Add(row.Cells[0].Value.ToString());
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection con = new SqlConnection(connection))
+            {
+                con.Open();
+                DateTime myDateTime = DateTime.Now;
+                string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
+                string newcom = "insert into bug_description (BugID,Class_file,Method,Code_block,Line_number) VALUES('" + comboBox4.Text + "','" + textBox1.Text + "','" + textBox2.Text + "','" + textBox5.Text + "','" + textBox3.Text + "')";
+                SqlCommand cmd = new SqlCommand(newcom, con);
+                cmd.ExecuteNonQuery();
+                string newcom1 = "UPDATE bug SET state = 'Completed',completed_date = '"+sqlFormattedDate+"' WHERE BugID = '" + comboBox4.Text + "' ";
+                SqlCommand cmd1 = new SqlCommand(newcom1, con);
+                cmd1.ExecuteNonQuery();
+                load();
             }
         }
     }
