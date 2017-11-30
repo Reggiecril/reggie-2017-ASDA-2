@@ -148,6 +148,8 @@ namespace Bug_Tracker
             }
             else
             {
+
+                MessageBox.Show("You can not assign nothing!");
             }
         }
     }
