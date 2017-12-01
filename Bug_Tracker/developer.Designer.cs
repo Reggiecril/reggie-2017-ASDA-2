@@ -66,6 +66,8 @@
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.panel_history = new System.Windows.Forms.Panel();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.combo_audit = new System.Windows.Forms.ComboBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel_assignBug.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -453,6 +455,9 @@
             // 
             // panel_history
             // 
+            this.panel_history.BackColor = System.Drawing.Color.White;
+            this.panel_history.Controls.Add(this.button4);
+            this.panel_history.Controls.Add(this.combo_audit);
             this.panel_history.Controls.Add(this.dataGridView4);
             this.panel_history.Location = new System.Drawing.Point(15, 89);
             this.panel_history.Name = "panel_history";
@@ -467,6 +472,24 @@
             this.dataGridView4.RowTemplate.Height = 30;
             this.dataGridView4.Size = new System.Drawing.Size(903, 365);
             this.dataGridView4.TabIndex = 0;
+            // 
+            // combo_audit
+            // 
+            this.combo_audit.Font = new System.Drawing.Font("Arial Unicode MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.combo_audit.FormattingEnabled = true;
+            this.combo_audit.Location = new System.Drawing.Point(99, 15);
+            this.combo_audit.Name = "combo_audit";
+            this.combo_audit.Size = new System.Drawing.Size(192, 46);
+            this.combo_audit.TabIndex = 1;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(397, 15);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(114, 46);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Audit";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // developer
             // 
@@ -534,5 +557,7 @@
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Panel panel_history;
         private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox combo_audit;
     }
 }
