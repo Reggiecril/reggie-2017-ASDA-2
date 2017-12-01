@@ -31,6 +31,7 @@ namespace Bug_Tracker
             panel_checkBugs.Show();
             panel_assignBug.Hide();
             panel_completeBug.Hide();
+            panel_history.Hide();
             this.comboBox1.Text = "All Bugs";
             this.comboBox2.Text = "All";
             using (SqlConnection con = new SqlConnection(connection))
@@ -93,9 +94,11 @@ namespace Bug_Tracker
             btn_checkBugs.BackColor = Color.White;
             btn_assignBug.BackColor = SystemColors.Info;
             btn_completeBug.BackColor = SystemColors.Info;
+            btn_history.BackColor = SystemColors.Info;
             panel_checkBugs.Show();
             panel_assignBug.Hide();
             panel_completeBug.Hide();
+            panel_history.Hide();
             using (SqlConnection con = new SqlConnection(connection))
             {
                 con.Open();
@@ -112,10 +115,11 @@ namespace Bug_Tracker
             btn_checkBugs.BackColor = SystemColors.Info;
             btn_assignBug.BackColor = Color.White;
             btn_completeBug.BackColor = SystemColors.Info;
+            btn_history.BackColor = SystemColors.Info;
             panel_checkBugs.Hide();
             panel_assignBug.Show();
             panel_completeBug.Hide();
-
+            panel_history.Hide();
             using (SqlConnection con = new SqlConnection(connection))
             {
                 con.Open();
@@ -159,12 +163,15 @@ namespace Bug_Tracker
 
         private void btn_completeBug_Click(object sender, EventArgs e)
         {
+            comboBox4.Items.Clear();
             btn_checkBugs.BackColor = SystemColors.Info;
             btn_assignBug.BackColor = SystemColors.Info;
             btn_completeBug.BackColor = Color.White;
+            btn_history.BackColor = SystemColors.Info;
             panel_checkBugs.Hide();
             panel_assignBug.Hide();
             panel_completeBug.Show();
+            panel_history.Hide();
             using (SqlConnection con = new SqlConnection(connection))
             {
                 SqlDataAdapter da = new SqlDataAdapter("Select * FROM bug where developer = '" + this.label3.Text + "' and state = 'Assigned' ", con);
@@ -196,6 +203,37 @@ namespace Bug_Tracker
                 SqlCommand cmd1 = new SqlCommand(newcom1, con);
                 cmd1.ExecuteNonQuery();
                 load();
+            }
+        }
+
+        private void btn_history_Click(object sender, EventArgs e)
+        {
+            btn_checkBugs.BackColor = SystemColors.Info;
+            btn_assignBug.BackColor = SystemColors.Info;
+            btn_completeBug.BackColor = SystemColors.Info;
+            btn_history.BackColor = Color.White;
+            panel_checkBugs.Hide();
+            panel_assignBug.Hide();
+            panel_completeBug.Hide();
+            panel_history.Show();
+            using (SqlConnection con = new SqlConnection(connection))
+            {
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter("Select BugID FROM bug where state = 'Completed' and developer = '"+label3.Text+"'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView4.DataSource = dt;
+                foreach (DataGridViewRow row in dataGridView4.Rows)
+                {
+                    var cell = row.Cells[0].Value;
+                    if (cell != null)
+                    {
+                        SqlDataAdapter da1 = new SqlDataAdapter("Select * FROM bug_description where BugID = '" + row.Cells[0].Value.ToString() + "'", con);
+                        DataTable dt1 = new DataTable();
+                        da1.Fill(dt1);
+                        dataGridView5.DataSource = dt1;
+                    }
+                }
             }
         }
     }
