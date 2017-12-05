@@ -28,6 +28,9 @@ namespace Bug_Tracker
         {
 
             btn_checkBugs.BackColor = Color.White;
+            btn_assignBug.BackColor = SystemColors.Info;
+            btn_completeBug.BackColor = SystemColors.Info;
+            btn_history.BackColor = SystemColors.Info;
             panel_checkBugs.Show();
             panel_assignBug.Hide();
             panel_completeBug.Hide();
@@ -196,10 +199,10 @@ namespace Bug_Tracker
                 con.Open();
                 DateTime myDateTime = DateTime.Now;
                 string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
-                string newcom = "insert into bug_description (BugID,Class_file,Method,Code_block,Line_number) VALUES('" + comboBox4.Text + "','" + textBox1.Text + "','" + textBox2.Text + "','" + textBox5.Text + "','" + textBox3.Text + "')";
+                string newcom = "insert into bug_description (BugID,Class_file,Method,Code_block,Line_number,update_date) VALUES('" + comboBox4.Text + "','" + textBox1.Text + "','" + textBox2.Text + "','" + textBox5.Text + "','" + textBox3.Text + "','" + sqlFormattedDate + "')";
                 SqlCommand cmd = new SqlCommand(newcom, con);
                 cmd.ExecuteNonQuery();
-                string newcom1 = "UPDATE bug SET state = 'Completed',completed_date = '"+sqlFormattedDate+"' WHERE BugID = '" + comboBox4.Text + "' ";
+                string newcom1 = "UPDATE bug SET state = 'Completed',completed_date = '"+sqlFormattedDate+ "', update_date = '"+sqlFormattedDate+"' WHERE BugID = '" + comboBox4.Text + "' ";
                 SqlCommand cmd1 = new SqlCommand(newcom1, con);
                 cmd1.ExecuteNonQuery();
                 load();
@@ -208,10 +211,12 @@ namespace Bug_Tracker
 
         private void btn_history_Click(object sender, EventArgs e)
         {
+            panel_audit.Hide();
+            combo_audit.Items.Clear();
             btn_checkBugs.BackColor = SystemColors.Info;
             btn_assignBug.BackColor = SystemColors.Info;
             btn_completeBug.BackColor = SystemColors.Info;
-            btn_history.BackColor = Color.White;
+            btn_history.BackColor = Color.White; 
             panel_checkBugs.Hide();
             panel_assignBug.Hide();
             panel_completeBug.Hide();
@@ -219,22 +224,71 @@ namespace Bug_Tracker
             using (SqlConnection con = new SqlConnection(connection))
             {
                 con.Open();
-                SqlDataAdapter da = new SqlDataAdapter("Select BugID FROM bug where state = 'Completed' and developer = '"+label3.Text+"'", con);
+                SqlDataAdapter da = new SqlDataAdapter("Select * FROM bug_description INNER JOIN bug ON bug_description.BugID = bug.BugID where state = 'Completed' and developer = '"+label3.Text+"'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView5.DataSource = dt;
+                
+            }
+            using (SqlConnection con = new SqlConnection(connection))
+            {
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter("Select BugID FROM bug where state = 'Completed' and developer = '" + label3.Text + "'", con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dataGridView4.DataSource = dt;
-                foreach (DataGridViewRow row in dataGridView4.Rows)
+
+            }
+            foreach (DataGridViewRow row in dataGridView4.Rows)
+            {
+                var cell = row.Cells[0].Value;
+                if (cell != null)
                 {
-                    var cell = row.Cells[0].Value;
-                    if (cell != null)
+                    combo_audit.Items.Add(row.Cells[0].Value.ToString());
+                }
+            }
+        }
+
+        private void btn_audit_Click(object sender, EventArgs e)
+        {
+            if (combo_audit.Text != "")
+            {
+                panel_audit.Show();
+                using (SqlConnection con = new SqlConnection(connection))
+                {
+                    con.Open();
+                    SqlCommand da = new SqlCommand("Select * FROM bug_description where BugID = '" + combo_audit.Text + "' and update_date = (select max(update_date) from bug_description)", con);
+                    SqlDataReader dr = da.ExecuteReader();
+                    if (dr.Read())
                     {
-                        SqlDataAdapter da1 = new SqlDataAdapter("Select * FROM bug_description where BugID = '" + row.Cells[0].Value.ToString() + "'", con);
-                        DataTable dt1 = new DataTable();
-                        da1.Fill(dt1);
-                        dataGridView5.DataSource = dt1;
+                        label13.Text = (dr["BugID"].ToString());
+                        txt_classFile.Text = (dr["Class_file"].ToString());
+                        txt_method.Text = (dr["Method"].ToString());
+                        txt_lineNumber.Text = (dr["Line_number"].ToString());
+                        txt_codeBlock.Text = (dr["Code_block"].ToString());
+                        txt_comment.Text = (dr["comment"].ToString());
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Please choose a bug to audit!");
+            }
+            
+        }
+
+        private void btn_finish_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection con = new SqlConnection(connection))
+            {
+                con.Open();
+                DateTime myDateTime = DateTime.Now;
+                string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
+                string newcom = "insert into bug_description (BugID,Class_file,Method,Code_block,Line_number,comment,update_date) VALUES('" + label13.Text + "','" + txt_classFile.Text + "','" + txt_method.Text + "','" + txt_codeBlock.Text + "','" + txt_lineNumber.Text + "','" + txt_comment.Text + "','" + sqlFormattedDate + "')";
+                SqlCommand cmd = new SqlCommand(newcom, con);
+                cmd.ExecuteNonQuery();
+            }
+            load();
         }
     }
 }
