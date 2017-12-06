@@ -199,7 +199,7 @@ namespace Bug_Tracker
                 con.Open();
                 DateTime myDateTime = DateTime.Now;
                 string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
-                string newcom = "insert into bug_description (BugID,Class_file,Method,Code_block,Line_number,update_date) VALUES('" + comboBox4.Text + "','" + textBox1.Text + "','" + textBox2.Text + "','" + textBox5.Text + "','" + textBox3.Text + "','" + sqlFormattedDate + "')";
+                string newcom = "insert into bug_description ( BugID, Class_file, Method, Source_code, Line_number, update_date) VALUES('" + comboBox4.Text + "','" + textBox1.Text + "','" + textBox2.Text + "','" + textBox5.Text + "','" + textBox3.Text + "','" + sqlFormattedDate + "')";
                 SqlCommand cmd = new SqlCommand(newcom, con);
                 cmd.ExecuteNonQuery();
                 string newcom1 = "UPDATE bug SET state = 'Completed',completed_date = '"+sqlFormattedDate+ "', update_date = '"+sqlFormattedDate+"' WHERE BugID = '" + comboBox4.Text + "' ";
@@ -212,6 +212,7 @@ namespace Bug_Tracker
         private void btn_history_Click(object sender, EventArgs e)
         {
             panel_audit.Hide();
+            btn_sourceCode.Hide();
             combo_audit.Items.Clear();
             btn_checkBugs.BackColor = SystemColors.Info;
             btn_assignBug.BackColor = SystemColors.Info;
@@ -254,6 +255,8 @@ namespace Bug_Tracker
             if (combo_audit.Text != "")
             {
                 panel_audit.Show();
+                btn_sourceCode.Show();
+                txt_sourceCode.Hide();
                 using (SqlConnection con = new SqlConnection(connection))
                 {
                     con.Open();
@@ -265,7 +268,6 @@ namespace Bug_Tracker
                         txt_classFile.Text = (dr["Class_file"].ToString());
                         txt_method.Text = (dr["Method"].ToString());
                         txt_lineNumber.Text = (dr["Line_number"].ToString());
-                        txt_codeBlock.Text = (dr["Code_block"].ToString());
                         txt_comment.Text = (dr["comment"].ToString());
                     }
                 }
@@ -284,11 +286,34 @@ namespace Bug_Tracker
                 con.Open();
                 DateTime myDateTime = DateTime.Now;
                 string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
-                string newcom = "insert into bug_description (BugID,Class_file,Method,Code_block,Line_number,comment,update_date) VALUES('" + label13.Text + "','" + txt_classFile.Text + "','" + txt_method.Text + "','" + txt_codeBlock.Text + "','" + txt_lineNumber.Text + "','" + txt_comment.Text + "','" + sqlFormattedDate + "')";
+                string newcom = "insert into bug_description (BugID,Class_file,Method,Line_number,comment,update_date) VALUES('" + label13.Text + "','" + txt_classFile.Text + "','" + txt_method.Text + "','" + txt_lineNumber.Text + "','" + txt_comment.Text + "','" + sqlFormattedDate + "')";
                 SqlCommand cmd = new SqlCommand(newcom, con);
                 cmd.ExecuteNonQuery();
             }
             load();
+        }
+
+        private void btn_sourceCode_Click(object sender, EventArgs e)
+        {
+            panel_audit.Hide();
+            txt_sourceCode.Show();
+            if (combo_audit.Text != "")
+            {
+                using (SqlConnection con = new SqlConnection(connection))
+                {
+                    con.Open();
+                    SqlCommand da = new SqlCommand("Select * FROM bug_description where BugID = '" + combo_audit.Text + "' and update_date = (select max(update_date) from bug_description)", con);
+                    SqlDataReader dr = da.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        txt_sourceCode.Text = (dr["Source_code"].ToString());
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose a bug !");
+            }
         }
     }
 }

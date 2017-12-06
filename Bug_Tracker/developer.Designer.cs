@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(developer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_logout = new System.Windows.Forms.Button();
@@ -64,11 +64,26 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel_history = new System.Windows.Forms.Panel();
+            this.panel_audit = new System.Windows.Forms.Panel();
+            this.txt_comment = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txt_method = new System.Windows.Forms.TextBox();
+            this.txt_classFile = new System.Windows.Forms.TextBox();
+            this.txt_lineNumber = new System.Windows.Forms.TextBox();
+            this.btn_finish = new System.Windows.Forms.Button();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.btn_audit = new System.Windows.Forms.Button();
             this.combo_audit = new System.Windows.Forms.ComboBox();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_sourceCode = new System.Windows.Forms.Button();
+            this.txt_sourceCode = new System.Windows.Forms.TextBox();
             this.panel_assignBug.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel_completeBug.SuspendLayout();
@@ -76,6 +91,8 @@
             this.panel_checkBugs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel_history.SuspendLayout();
+            this.panel_audit.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.panel1.SuspendLayout();
@@ -331,7 +348,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 18);
             this.label6.TabIndex = 4;
-            this.label6.Text = "Code Block";
+            this.label6.Text = "Source Code";
             // 
             // label5
             // 
@@ -384,14 +401,14 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Unicode MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Unicode MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(10, 81);
             this.dataGridView1.Name = "dataGridView1";
@@ -444,6 +461,9 @@
             // panel_history
             // 
             this.panel_history.BackColor = System.Drawing.Color.White;
+            this.panel_history.Controls.Add(this.txt_sourceCode);
+            this.panel_history.Controls.Add(this.btn_sourceCode);
+            this.panel_history.Controls.Add(this.panel_audit);
             this.panel_history.Controls.Add(this.dataGridView5);
             this.panel_history.Controls.Add(this.btn_audit);
             this.panel_history.Controls.Add(this.combo_audit);
@@ -452,6 +472,144 @@
             this.panel_history.Name = "panel_history";
             this.panel_history.Size = new System.Drawing.Size(937, 453);
             this.panel_history.TabIndex = 19;
+            // 
+            // panel_audit
+            // 
+            this.panel_audit.Controls.Add(this.txt_comment);
+            this.panel_audit.Controls.Add(this.label17);
+            this.panel_audit.Controls.Add(this.tableLayoutPanel1);
+            this.panel_audit.Controls.Add(this.btn_finish);
+            this.panel_audit.Location = new System.Drawing.Point(9, 81);
+            this.panel_audit.Name = "panel_audit";
+            this.panel_audit.Size = new System.Drawing.Size(916, 365);
+            this.panel_audit.TabIndex = 4;
+            this.panel_audit.Visible = false;
+            // 
+            // txt_comment
+            // 
+            this.txt_comment.Location = new System.Drawing.Point(186, 154);
+            this.txt_comment.Multiline = true;
+            this.txt_comment.Name = "txt_comment";
+            this.txt_comment.Size = new System.Drawing.Size(668, 128);
+            this.txt_comment.TabIndex = 6;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(83, 154);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(71, 18);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "Comment";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.72362F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.27638F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 209F));
+            this.tableLayoutPanel1.Controls.Add(this.label12, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label13, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label14, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label15, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txt_method, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txt_classFile, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txt_lineNumber, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label11, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(51, 30);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(812, 110);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(37, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 18);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "BugID";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(32, 73);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(62, 18);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Method";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(170, 18);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(71, 18);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "label13";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(475, 18);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(98, 18);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Class File";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(471, 73);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(107, 18);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Line Number";
+            // 
+            // txt_method
+            // 
+            this.txt_method.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txt_method.Location = new System.Drawing.Point(133, 68);
+            this.txt_method.Name = "txt_method";
+            this.txt_method.Size = new System.Drawing.Size(145, 28);
+            this.txt_method.TabIndex = 5;
+            // 
+            // txt_classFile
+            // 
+            this.txt_classFile.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txt_classFile.Location = new System.Drawing.Point(611, 13);
+            this.txt_classFile.Name = "txt_classFile";
+            this.txt_classFile.Size = new System.Drawing.Size(191, 28);
+            this.txt_classFile.TabIndex = 6;
+            // 
+            // txt_lineNumber
+            // 
+            this.txt_lineNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txt_lineNumber.Location = new System.Drawing.Point(612, 68);
+            this.txt_lineNumber.Name = "txt_lineNumber";
+            this.txt_lineNumber.Size = new System.Drawing.Size(189, 28);
+            this.txt_lineNumber.TabIndex = 7;
+            this.txt_lineNumber.Visible = false;
+            // 
+            // btn_finish
+            // 
+            this.btn_finish.Location = new System.Drawing.Point(406, 288);
+            this.btn_finish.Name = "btn_finish";
+            this.btn_finish.Size = new System.Drawing.Size(138, 60);
+            this.btn_finish.TabIndex = 1;
+            this.btn_finish.Text = "Finish";
+            this.btn_finish.UseVisualStyleBackColor = true;
+            this.btn_finish.Click += new System.EventHandler(this.btn_finish_Click);
             // 
             // dataGridView5
             // 
@@ -510,6 +668,26 @@
             this.panel1.Size = new System.Drawing.Size(955, 558);
             this.panel1.TabIndex = 0;
             // 
+            // btn_sourceCode
+            // 
+            this.btn_sourceCode.Location = new System.Drawing.Point(672, 15);
+            this.btn_sourceCode.Name = "btn_sourceCode";
+            this.btn_sourceCode.Size = new System.Drawing.Size(119, 46);
+            this.btn_sourceCode.TabIndex = 5;
+            this.btn_sourceCode.Text = "Source Code";
+            this.btn_sourceCode.UseVisualStyleBackColor = true;
+            this.btn_sourceCode.Visible = false;
+            this.btn_sourceCode.Click += new System.EventHandler(this.btn_sourceCode_Click);
+            // 
+            // txt_sourceCode
+            // 
+            this.txt_sourceCode.Location = new System.Drawing.Point(10, 81);
+            this.txt_sourceCode.Multiline = true;
+            this.txt_sourceCode.Name = "txt_sourceCode";
+            this.txt_sourceCode.Size = new System.Drawing.Size(915, 365);
+            this.txt_sourceCode.TabIndex = 7;
+            this.txt_sourceCode.Visible = false;
+            // 
             // developer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -530,6 +708,11 @@
             this.panel_checkBugs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel_history.ResumeLayout(false);
+            this.panel_history.PerformLayout();
+            this.panel_audit.ResumeLayout(false);
+            this.panel_audit.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -579,5 +762,20 @@
         private System.Windows.Forms.ComboBox combo_audit;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_audit;
+        private System.Windows.Forms.TextBox txt_comment;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txt_method;
+        private System.Windows.Forms.TextBox txt_classFile;
+        private System.Windows.Forms.TextBox txt_lineNumber;
+        private System.Windows.Forms.Button btn_finish;
+        private System.Windows.Forms.Button btn_sourceCode;
+        private System.Windows.Forms.TextBox txt_sourceCode;
     }
 }
