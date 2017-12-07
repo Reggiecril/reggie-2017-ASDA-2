@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(developer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_logout = new System.Windows.Forms.Button();
@@ -44,10 +44,12 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel_completeBug = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -64,11 +66,12 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel_history = new System.Windows.Forms.Panel();
+            this.txt_sourceCode = new System.Windows.Forms.RichTextBox();
+            this.btn_sourceCode = new System.Windows.Forms.Button();
             this.panel_audit = new System.Windows.Forms.Panel();
             this.txt_comment = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -76,14 +79,13 @@
             this.txt_method = new System.Windows.Forms.TextBox();
             this.txt_classFile = new System.Windows.Forms.TextBox();
             this.txt_lineNumber = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.btn_finish = new System.Windows.Forms.Button();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.btn_audit = new System.Windows.Forms.Button();
             this.combo_audit = new System.Windows.Forms.ComboBox();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_sourceCode = new System.Windows.Forms.Button();
-            this.txt_sourceCode = new System.Windows.Forms.TextBox();
             this.panel_assignBug.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel_completeBug.SuspendLayout();
@@ -243,10 +245,12 @@
             // panel_completeBug
             // 
             this.panel_completeBug.BackColor = System.Drawing.Color.White;
+            this.panel_completeBug.Controls.Add(this.label18);
+            this.panel_completeBug.Controls.Add(this.label16);
+            this.panel_completeBug.Controls.Add(this.button3);
             this.panel_completeBug.Controls.Add(this.button2);
             this.panel_completeBug.Controls.Add(this.dataGridView3);
             this.panel_completeBug.Controls.Add(this.label10);
-            this.panel_completeBug.Controls.Add(this.textBox5);
             this.panel_completeBug.Controls.Add(this.textBox3);
             this.panel_completeBug.Controls.Add(this.textBox2);
             this.panel_completeBug.Controls.Add(this.label7);
@@ -262,6 +266,37 @@
             this.panel_completeBug.Size = new System.Drawing.Size(933, 453);
             this.panel_completeBug.TabIndex = 16;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(515, 296);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(71, 18);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "label18";
+            this.label18.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial Unicode MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label16.Location = new System.Drawing.Point(262, 286);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(109, 38);
+            this.label16.TabIndex = 17;
+            this.label16.Text = "label16";
+            this.label16.Visible = false;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(269, 285);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(102, 40);
+            this.button3.TabIndex = 16;
+            this.button3.Text = "Open";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(364, 412);
@@ -275,7 +310,7 @@
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(83, 81);
+            this.dataGridView3.Location = new System.Drawing.Point(98, 67);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowTemplate.Height = 30;
             this.dataGridView3.Size = new System.Drawing.Size(734, 197);
@@ -291,14 +326,6 @@
             this.label10.Size = new System.Drawing.Size(89, 18);
             this.label10.TabIndex = 13;
             this.label10.Text = "Completed";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(98, 284);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(674, 122);
-            this.textBox5.TabIndex = 12;
             // 
             // textBox3
             // 
@@ -344,9 +371,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(95, 253);
+            this.label6.Location = new System.Drawing.Point(95, 296);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 18);
+            this.label6.Size = new System.Drawing.Size(107, 18);
             this.label6.TabIndex = 4;
             this.label6.Text = "Source Code";
             // 
@@ -392,7 +419,7 @@
             this.panel_checkBugs.Controls.Add(this.comboBox1);
             this.panel_checkBugs.Controls.Add(this.comboBox2);
             this.panel_checkBugs.Controls.Add(this.button1);
-            this.panel_checkBugs.Location = new System.Drawing.Point(9, 89);
+            this.panel_checkBugs.Location = new System.Drawing.Point(9, 90);
             this.panel_checkBugs.Name = "panel_checkBugs";
             this.panel_checkBugs.Size = new System.Drawing.Size(933, 454);
             this.panel_checkBugs.TabIndex = 20;
@@ -401,14 +428,14 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Unicode MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Unicode MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(10, 81);
             this.dataGridView1.Name = "dataGridView1";
@@ -473,6 +500,28 @@
             this.panel_history.Size = new System.Drawing.Size(937, 453);
             this.panel_history.TabIndex = 19;
             // 
+            // txt_sourceCode
+            // 
+            this.txt_sourceCode.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_sourceCode.Location = new System.Drawing.Point(9, 81);
+            this.txt_sourceCode.Name = "txt_sourceCode";
+            this.txt_sourceCode.ReadOnly = true;
+            this.txt_sourceCode.Size = new System.Drawing.Size(916, 365);
+            this.txt_sourceCode.TabIndex = 6;
+            this.txt_sourceCode.Text = "";
+            this.txt_sourceCode.TextChanged += new System.EventHandler(this.txt_sourceCode_TextChanged);
+            // 
+            // btn_sourceCode
+            // 
+            this.btn_sourceCode.Location = new System.Drawing.Point(672, 15);
+            this.btn_sourceCode.Name = "btn_sourceCode";
+            this.btn_sourceCode.Size = new System.Drawing.Size(119, 46);
+            this.btn_sourceCode.TabIndex = 5;
+            this.btn_sourceCode.Text = "Source Code";
+            this.btn_sourceCode.UseVisualStyleBackColor = true;
+            this.btn_sourceCode.Visible = false;
+            this.btn_sourceCode.Click += new System.EventHandler(this.btn_sourceCode_Click);
+            // 
             // panel_audit
             // 
             this.panel_audit.Controls.Add(this.txt_comment);
@@ -509,7 +558,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.27638F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 209F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 212F));
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label13, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label14, 3, 0);
@@ -526,16 +575,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(812, 110);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // label11
-            // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(37, 18);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(53, 18);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "BugID";
-            // 
             // label12
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -550,7 +589,7 @@
             // 
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(170, 18);
+            this.label13.Location = new System.Drawing.Point(168, 18);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(71, 18);
             this.label13.TabIndex = 2;
@@ -560,7 +599,7 @@
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(475, 18);
+            this.label14.Location = new System.Drawing.Point(472, 18);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(98, 18);
             this.label14.TabIndex = 3;
@@ -570,7 +609,7 @@
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(471, 73);
+            this.label15.Location = new System.Drawing.Point(468, 73);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(107, 18);
             this.label15.TabIndex = 4;
@@ -579,7 +618,7 @@
             // txt_method
             // 
             this.txt_method.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_method.Location = new System.Drawing.Point(133, 68);
+            this.txt_method.Location = new System.Drawing.Point(131, 68);
             this.txt_method.Name = "txt_method";
             this.txt_method.Size = new System.Drawing.Size(145, 28);
             this.txt_method.TabIndex = 5;
@@ -587,7 +626,7 @@
             // txt_classFile
             // 
             this.txt_classFile.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_classFile.Location = new System.Drawing.Point(611, 13);
+            this.txt_classFile.Location = new System.Drawing.Point(610, 13);
             this.txt_classFile.Name = "txt_classFile";
             this.txt_classFile.Size = new System.Drawing.Size(191, 28);
             this.txt_classFile.TabIndex = 6;
@@ -595,11 +634,21 @@
             // txt_lineNumber
             // 
             this.txt_lineNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_lineNumber.Location = new System.Drawing.Point(612, 68);
+            this.txt_lineNumber.Location = new System.Drawing.Point(611, 68);
             this.txt_lineNumber.Name = "txt_lineNumber";
             this.txt_lineNumber.Size = new System.Drawing.Size(189, 28);
             this.txt_lineNumber.TabIndex = 7;
             this.txt_lineNumber.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(36, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 18);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "BugID";
             // 
             // btn_finish
             // 
@@ -668,26 +717,6 @@
             this.panel1.Size = new System.Drawing.Size(955, 558);
             this.panel1.TabIndex = 0;
             // 
-            // btn_sourceCode
-            // 
-            this.btn_sourceCode.Location = new System.Drawing.Point(672, 15);
-            this.btn_sourceCode.Name = "btn_sourceCode";
-            this.btn_sourceCode.Size = new System.Drawing.Size(119, 46);
-            this.btn_sourceCode.TabIndex = 5;
-            this.btn_sourceCode.Text = "Source Code";
-            this.btn_sourceCode.UseVisualStyleBackColor = true;
-            this.btn_sourceCode.Visible = false;
-            this.btn_sourceCode.Click += new System.EventHandler(this.btn_sourceCode_Click);
-            // 
-            // txt_sourceCode
-            // 
-            this.txt_sourceCode.Location = new System.Drawing.Point(10, 81);
-            this.txt_sourceCode.Multiline = true;
-            this.txt_sourceCode.Name = "txt_sourceCode";
-            this.txt_sourceCode.Size = new System.Drawing.Size(915, 365);
-            this.txt_sourceCode.TabIndex = 7;
-            this.txt_sourceCode.Visible = false;
-            // 
             // developer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -700,6 +729,7 @@
             this.Name = "developer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "developer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.developer_FormClosing);
             this.panel_assignBug.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel_completeBug.ResumeLayout(false);
@@ -708,7 +738,6 @@
             this.panel_checkBugs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel_history.ResumeLayout(false);
-            this.panel_history.PerformLayout();
             this.panel_audit.ResumeLayout(false);
             this.panel_audit.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -740,7 +769,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label7;
@@ -776,6 +804,9 @@
         private System.Windows.Forms.TextBox txt_lineNumber;
         private System.Windows.Forms.Button btn_finish;
         private System.Windows.Forms.Button btn_sourceCode;
-        private System.Windows.Forms.TextBox txt_sourceCode;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.RichTextBox txt_sourceCode;
     }
 }
