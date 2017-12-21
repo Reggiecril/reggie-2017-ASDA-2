@@ -421,6 +421,12 @@ namespace Bug_Tracker
                 SqlCommand cmd = new SqlCommand(newcom, con);
                 cmd.ExecuteNonQuery();
             }
+            GitRepositoryManager grm = new GitRepositoryManager("reggiecril0618@gmail.com", "Cloud19961008", "https://reggiecril@bitbucket.org/reggiecril/history.git", @"C:\Users\Reggie\source\repos\history");
+            String message = "a commit";
+            Signature author = new Signature("reggie", "ss@jugglingnutcase", DateTime.Now);
+            Signature commiter = author;
+            CommitOptions co = new CommitOptions();
+            grm.PushCommits("history", @"refs/heads/master");
             load();
         }
         /// <summary>

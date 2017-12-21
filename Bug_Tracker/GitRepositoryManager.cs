@@ -40,7 +40,7 @@ namespace Bug_Tracker
 
             _repoSource = gitRepoUrl;
         }
-
+        
         /// <summary>
         /// Commits all changes.
         /// </summary>
@@ -54,6 +54,7 @@ namespace Bug_Tracker
                 repo.Stage(files);
 
                 repo.Commit(message,author,commiter,options);
+
             }
         }
 
