@@ -8,19 +8,54 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using LibGit2Sharp;
 
 namespace Bug_Tracker
 {
+    /// <summary>
+    /// this is the main form, people can login by developer or tester.
+    /// </summary>
     public partial class Login : Form
     {
+        /// <summary>
+        /// database path
+        /// </summary>
         string connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Reggie\Documents\Bug_Tracker_Table.mdf;Integrated Security=True;Connect Timeout=30";
-
+        /// <summary>
+        /// display the login form.
+        /// </summary>
         public Login()
         {
             InitializeComponent();
-           
         }
-
+        /// <summary>
+        /// tester login.
+        /// </summary>
+        /// <param name="sender">Event Sender</param>
+        /// <param name="e">Event Arguments</param>
+        /// <remarks>
+        /// login will check the email and password. if there are,  tester can enter to tester form.
+        /// </remarks>
+        /// <example>
+        /// <code>
+        ///     using (SqlConnection con = new SqlConnection(connection))
+        ///     {
+        ///         SqlDataAdapter da = new SqlDataAdapter("Select name From [user] where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "'", con);
+        ///         DataTable dt = new DataTable();
+        ///         da.Fill(dt);
+        ///               
+        ///         if (dt.Rows.Count == 1)
+        ///         {
+        ///             this.Hide();
+        ///             tester tester = new tester(dt.Rows[0][0].ToString());
+        ///             tester.Show();
+        ///         }
+        ///         else
+        ///         {
+        ///             MessageBox.Show("Please Check Your e-mail or password");
+        ///         }
+        /// </code>
+        /// </example>
         private void btn_user_login_Click(object sender, EventArgs e)
         {
 
@@ -29,7 +64,6 @@ namespace Bug_Tracker
                 SqlDataAdapter da = new SqlDataAdapter("Select name From [user] where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "'", con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                
                 if (dt.Rows.Count == 1)
                 {
                     this.Hide();
@@ -42,8 +76,42 @@ namespace Bug_Tracker
                 }
 
             }
-        }
+            GitRepositoryManager grm = new GitRepositoryManager("reggiecril0618@gmail.com","Cloud19961008", "https://reggiecril@bitbucket.org/reggiecril/bug_tracker_records.git", @"C:\Users\Reggie\source\repos\Bug_Tracker");
+            String message = "a commit";
+            Signature author = new Signature("reggie", "ss@jugglingnutcase", DateTime.Now);
+            Signature commiter = author;
+            CommitOptions co = new CommitOptions();
+            grm.CommitAllChanges(message,author,commiter,co);
 
+        }
+        /// <summary>
+        ///  developer login.
+        /// </summary>
+        /// <param name="sender">Event Sender</param>
+        /// <param name="e">Event Arguments</param>
+        /// <remarks>
+        /// login will check the email and password. if there are,  developer can enter to develper form.
+        /// </remarks>
+        /// <example>
+        /// <code>
+        ///     using (SqlConnection con = new SqlConnection(connection))
+        ///     {
+        ///         SqlDataAdapter da = new SqlDataAdapter("Select name From [developer] where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "'", con);
+        ///         DataTable dt = new DataTable();
+        ///         da.Fill(dt);
+        ///               
+        ///         if (dt.Rows.Count == 1)
+        ///         {
+        ///             this.Hide();
+        ///             developer developer = new developer("reggie");
+        ///              developer.Show();
+        ///         }
+        ///         else
+        ///         {
+        ///             MessageBox.Show("Please Check Your e-mail or password");
+        ///         }
+        /// </code>
+        /// </example>
         private void btn_developer_login_Click(object sender, EventArgs e)
         {
             using (SqlConnection con = new SqlConnection(connection))
@@ -51,12 +119,11 @@ namespace Bug_Tracker
                 SqlDataAdapter da = new SqlDataAdapter("Select name From [developer] where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "'", con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                this.Hide();
-                    developer developer = new developer("reggie");
-                    developer.Show();
                 if (dt.Rows.Count == 1)
                 {
-                    
+                    this.Hide();
+                    developer developer = new developer(dt.Rows[0][0].ToString());
+                    developer.Show();
                 }
                 else
                 {

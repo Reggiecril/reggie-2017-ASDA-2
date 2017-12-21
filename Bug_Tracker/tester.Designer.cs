@@ -170,7 +170,7 @@
             this.label_testState.AutoSize = true;
             this.label_testState.Location = new System.Drawing.Point(519, 102);
             this.label_testState.Name = "label_testState";
-            this.label_testState.Size = new System.Drawing.Size(62, 18);
+            this.label_testState.Size = new System.Drawing.Size(80, 18);
             this.label_testState.TabIndex = 15;
             this.label_testState.Text = "Uploaded";
             // 
@@ -400,6 +400,7 @@
             this.Name = "tester";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bug Tracker System-Tester";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.tester_FormClosing);
             this.panel_testerAdd.ResumeLayout(false);
             this.panel_testerAdd.PerformLayout();
             this.panel_allTestedBug.ResumeLayout(false);

@@ -96,7 +96,7 @@ namespace Bug_Tracker
         { 
             Login login = new Login();
             login.Show();
-            this.Close();
+            this.Hide();
         
         }
         /// <summary>
