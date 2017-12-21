@@ -78,7 +78,7 @@ namespace Bug_Tracker
             }
             GitRepositoryManager grm = new GitRepositoryManager("reggiecril0618@gmail.com","Cloud19961008", "https://reggiecril@bitbucket.org/reggiecril/bug_tracker_records.git", @"C:\Users\Reggie\source\repos\Bug_Tracker");
             String message = "a commit";
-            Signature author = new Signature("reggic", "ss@jugglingnutcase", DateTime.Now);
+            Signature author = new Signature("reggie", "ss@jugglingnutcase", DateTime.Now);
             Signature commiter = author;
             CommitOptions co = new CommitOptions();
             grm.CommitAllChanges(message,author,commiter,co);
