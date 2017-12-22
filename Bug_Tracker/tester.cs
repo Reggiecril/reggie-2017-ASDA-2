@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 
 namespace Bug_Tracker
 {
+   
     /// <summary>
     /// This class is function for tester form
     /// <list type="bullet">
