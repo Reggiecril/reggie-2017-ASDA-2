@@ -42,7 +42,28 @@ namespace Bug_Tracker
             InitializeComponent();
             this.label_username.Text = username;
             load();
+            reminder();
 
+
+        }
+        public void reminder()
+        {
+            using (SqlConnection con = new SqlConnection(connection))
+            {
+                con.Open();
+                SqlCommand da = new SqlCommand("Select * FROM bug Where completed_date = (Select MAX(completed_date) FROM bug) and tester = '"+label_username+"'", con);
+                SqlDataReader dr = da.ExecuteReader();
+                if (dr.Read())
+                {
+                    label26.Text = (dr["developer"].ToString());
+                    label28.Text = (dr["completed_date"].ToString());
+                }
+                if (label26.Text == "")
+                {
+                    panel_reminder.Hide();
+                }
+
+            }
 
         }
         /// <summary>
@@ -163,9 +184,8 @@ namespace Bug_Tracker
                 string newcom = "insert into bug (project,bugTitle,cause,bugSummary,priority,state,start_date,tester) VALUES('" + txt_project.Text + "','" + txt_bugTitle.Text + "','" + txt_cause.Text + "','" + txt_bugSummary.Text + "','" + cmb_priority.Text + "','" + label_testState.Text + "','" + sqlFormattedDate + "','"+label_username.Text+"')";
                 SqlCommand cmd = new SqlCommand(newcom, con);
                 cmd.ExecuteNonQuery();
-                load();
             }
-
+            load();
         }
         /// <summary>
         /// when the form close, the application will stop.

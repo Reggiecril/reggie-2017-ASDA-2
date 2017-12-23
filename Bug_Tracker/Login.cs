@@ -63,12 +63,12 @@ namespace Bug_Tracker
             {
                 SqlDataAdapter da = new SqlDataAdapter("Select name From [user] where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "'", con);
                 DataTable dt = new DataTable();
-                da.Fill(dt);
+                da.Fill(dt);this.Hide();
+                    tester tester = new tester("reggiecril");
+                    tester.Show();
                 if (dt.Rows.Count == 1)
                 {
-                    this.Hide();
-                    tester tester = new tester(dt.Rows[0][0].ToString());
-                    tester.Show();
+                    
                 }
                 else
                 {

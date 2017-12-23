@@ -45,9 +45,32 @@ namespace Bug_Tracker
         {
             InitializeComponent();
             load();
+            reminder();
             this.label3.Text = name;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        public void reminder()
+        {
+            using (SqlConnection con = new SqlConnection(connection))
+            {
+                con.Open();
+                    SqlCommand da = new SqlCommand("Select * FROM bug Where start_date = (Select MAX(start_date) FROM bug)", con);
+                    SqlDataReader dr = da.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        label26.Text = (dr["tester"].ToString());
+                        label28.Text = (dr["start_date"].ToString());
+                    }
+                if (label26.Text == "")
+                {
+                    panel_reminder.Hide();
+                }
+                
+            }
+            
+        }
         /// <summary>
         /// This method is to display the first page when load to this form.
         /// </summary>
@@ -87,6 +110,7 @@ namespace Bug_Tracker
                 da.Fill(dt);
                 dataGridView1.DataSource = dt;
             }
+            
         }
         /// <summary>
         /// turn to Login form
@@ -186,6 +210,7 @@ namespace Bug_Tracker
             panel_assignBug.Show();
             panel_completeBug.Hide();
             panel_history.Hide();
+            panel_reminder.Hide();
             using (SqlConnection con = new SqlConnection(connection))
             {
                 con.Open();
@@ -517,11 +542,27 @@ namespace Bug_Tracker
         /// <summary>
         /// sytnax color
         /// </summary>
-        public Regex keyWordsBlue = new Regex("using | if | then | else | fi | true | while | do | done | set | export | bool | break | case | class | const | for | foreach | goto | in | void |if\n|then\n| else\n|fi\n|true\n|while\n|do\n|done\n|set\n|export\n|bool\n|break\n|case\n|class\n|const\n|for\n|foreach\n|goto\n|in\n|public void\n| public| private| protected|partial");
+        public Regex keyWordsBlue = new Regex("using| if | then | else| fi| true| while| do| done| set| export| bool| break| case| class| const| for| foreach| goto| in| void |if\n|then\n| else\n|fi\n|true\n|while\n|do\n|done\n|set\n|export\n|bool\n|break\n|case\n|class\n|const\n|for\n|foreach\n|goto\n|in\n|public void\n| public| private| protected|partial|namespace |string | this|new |object |foreach |var |null|DataGridViewRow |SqlDataReader |SqlCommand ");
+        /// <summary>
+        /// sytnax color .
+        /// </summary>
+        public Regex keyWordsLightGreen = new Regex("Match|FonStyle|@| Color|SystemColors|SqlConnection|SqlDataAdapter|DataTable|EventArgs|DataTime| MessageBox|StreamReader|Path|Regex|OpenFileDialog|DialogResult|File|CommitOption|Signature|GitRepositoryManager|Directory|StreamWrite");
         /// <summary>
         /// sytnax color for string in queto.
         /// </summary>
         public Regex keyWordsYellow = new Regex("\".*?\"");
+        /// <summary>
+        /// sytnax color for line have"//".
+        /// </summary>
+        public Regex keyWordsGreen = new Regex("//");
+        /// <summary>
+        /// set a color
+        /// </summary>
+        Color cc = Color.FromArgb(179,114,91);
+        /// <summary>
+        /// set a color
+        /// </summary>
+        Color comment= Color.FromArgb(0,100,0);
         /// <summary>
         /// set a color
         /// </summary>
@@ -534,10 +575,22 @@ namespace Bug_Tracker
         /// </remarks>
         private void ApplySyntaxHighlighting()
         {
-
+            
             // Start applying the highlighting... Set a value to selPos
             int selPos = txt_sourceCode.SelectionStart;
-
+            foreach (Match keyWordMatch in keyWordsLightGreen.Matches(txt_sourceCode.Text))
+            {
+                // Select the word..
+                txt_sourceCode.Select(keyWordMatch.Index, keyWordMatch.Length);
+                // Change it to light green
+                txt_sourceCode.SelectionColor = cc;
+                // Set it to bold for this example
+                txt_sourceCode.SelectionFont = new Font(txt_sourceCode.SelectionFont, FontStyle.Regular);
+                // Move cursor back to where it was
+                txt_sourceCode.SelectionStart = selPos;
+                // Change the default font color back to black.
+                txt_sourceCode.SelectionColor = Color.Black;
+            }
             foreach (Match keyWordMatch in keyWordsBlue.Matches(txt_sourceCode.Text))
             {
                 // Select the word..
@@ -548,22 +601,41 @@ namespace Bug_Tracker
                 txt_sourceCode.SelectionFont = new Font(txt_sourceCode.SelectionFont, FontStyle.Regular);
                 // Move cursor back to where it was
                 txt_sourceCode.SelectionStart = selPos;
-                // Change the default font color back to black.
-                txt_sourceCode.SelectionColor = Color.Black;
+
             }
             foreach (Match keyWordMatch in keyWordsYellow.Matches(txt_sourceCode.Text))
             {
                 // Select the word..
                 txt_sourceCode.Select(keyWordMatch.Index, keyWordMatch.Length);
-                // Change it to blue
+                // Change it to orange
                 txt_sourceCode.SelectionColor = Color.Orange;
                 // Set it to bold for this example
                 txt_sourceCode.SelectionFont = new Font(txt_sourceCode.SelectionFont, FontStyle.Regular);
                 // Move cursor back to where it was
                 txt_sourceCode.SelectionStart = selPos;
             }
-        }
 
+            for (int i = 0; i < txt_sourceCode.Lines.Count(); i++)
+            {
+                highlightLineContaining(txt_sourceCode, i);
+            }
+        }
+        /// <summary>
+        /// get the entire line when the line have "//"
+        /// </summary>
+        /// <param name="rtb">get richtextbox</param>
+        /// <param name="line">select line</param>
+        public void highlightLineContaining(RichTextBox rtb, int line)
+        {
+            int c0 = rtb.GetFirstCharIndexFromLine(line);
+            int c1 = rtb.GetFirstCharIndexFromLine(line + 1);
+            if (c1 < 0) c1 = rtb.Text.Length;
+            rtb.SelectionStart = c0;
+            rtb.SelectionLength = c1 - c0;
+            if (rtb.SelectedText.Contains("//"))
+                rtb.SelectionColor = comment;
+            rtb.SelectionLength = 0;
+        }
         /// <summary>
         /// when the form close, the application will stop.
         /// </summary>
@@ -581,6 +653,16 @@ namespace Bug_Tracker
         private void txt_sourceCode_TextChanged_1(object sender, EventArgs e)
         {
             ApplySyntaxHighlighting();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel_reminder.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
