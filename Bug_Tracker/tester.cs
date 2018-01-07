@@ -41,8 +41,9 @@ namespace Bug_Tracker
 
             InitializeComponent();
             this.label_username.Text = username;
-            load();
             reminder();
+            load();
+           
 
 
         }
@@ -51,8 +52,9 @@ namespace Bug_Tracker
             using (SqlConnection con = new SqlConnection(connection))
             {
                 con.Open();
-                SqlCommand da = new SqlCommand("Select * FROM bug Where completed_date = (Select MAX(completed_date) FROM bug) and tester = '"+label_username+"'", con);
-                SqlDataReader dr = da.ExecuteReader();
+               
+                SqlCommand da1 = new SqlCommand("Select * FROM bug where tester = '" + label_username.Text + "' and completed_date = (select max(completed_date) from bug)", con);
+                SqlDataReader dr = da1.ExecuteReader();
                 if (dr.Read())
                 {
                     label26.Text = (dr["developer"].ToString());
@@ -195,6 +197,38 @@ namespace Bug_Tracker
         private void tester_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+        /// <summary>
+        /// Panel reminder close.
+        /// </summary>
+        /// <param name="sender">Event Sender</param>
+        /// <param name="e">Event Arguments</param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel_reminder.Hide();
+        }
+        /// <summary>
+        /// when click "check it out" it will turn to "My Tested Bug"panel.
+        /// </summary>
+        /// <param name="sender">Event Sender</param>
+        /// <param name="e">Event Arguments</param>
+        private void button3_Click(object sender, EventArgs e)
+        {
+            btn_testerAll.BackColor = Color.Silver;
+            btn_testerAddBug.BackColor = Color.Silver;
+            btn_testerMy.BackColor = Color.White;
+            panel_testerAdd.Hide();
+            panel_allTestedBug.Hide();
+            panel_myTestedBug.Show();
+            panel_reminder.Hide();
+            using (SqlConnection con = new SqlConnection(connection))
+            {
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter("Select * FROM bug where tester = '" + label_username.Text + "'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                datagv_myTestedBug.DataSource = dt;
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using LibGit2Sharp;
+using System.Net.Mail;
 
 namespace Bug_Tracker
 {
@@ -61,10 +62,10 @@ namespace Bug_Tracker
 
             using (SqlConnection con = new SqlConnection(connection))
             {
-                SqlDataAdapter da = new SqlDataAdapter("Select name From [user] where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "'", con);
+                SqlDataAdapter da = new SqlDataAdapter("Select name From buger where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "' and role = 'tester'", con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);this.Hide();
-                    tester tester = new tester("reggiecril");
+                    tester tester = new tester(dt.Rows[0][0].ToString());
                     tester.Show();
                 if (dt.Rows.Count == 1)
                 {
@@ -109,9 +110,11 @@ namespace Bug_Tracker
         /// </example>
         private void btn_developer_login_Click(object sender, EventArgs e)
         {
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+            client.EnableSsl
             using (SqlConnection con = new SqlConnection(connection))
             {
-                SqlDataAdapter da = new SqlDataAdapter("Select name From [developer] where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "'", con);
+                SqlDataAdapter da = new SqlDataAdapter("Select name From buger where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "' and role = 'developer'", con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 if (dt.Rows.Count == 1)
@@ -126,6 +129,18 @@ namespace Bug_Tracker
                 }
 
             }
+        }
+
+        private void btn_register_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            register re = new register();
+            re.Show();
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

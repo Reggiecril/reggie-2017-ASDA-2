@@ -658,11 +658,6 @@ namespace Bug_Tracker
         private void button2_Click(object sender, EventArgs e)
         {
             panel_reminder.Hide();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
+        } 
     }
 }

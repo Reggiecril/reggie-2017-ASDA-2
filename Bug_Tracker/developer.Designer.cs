@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(developer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_logout = new System.Windows.Forms.Button();
@@ -277,14 +277,14 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial Unicode MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Unicode MS", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(10, 81);
             this.dataGridView1.Name = "dataGridView1";
@@ -756,7 +756,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.46619F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 216F));
             this.tableLayoutPanel1.Controls.Add(this.label_project, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label21, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 1);
@@ -782,7 +782,7 @@
             // 
             this.label_project.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_project.AutoSize = true;
-            this.label_project.Location = new System.Drawing.Point(174, 128);
+            this.label_project.Location = new System.Drawing.Point(173, 128);
             this.label_project.Name = "label_project";
             this.label_project.Size = new System.Drawing.Size(71, 18);
             this.label_project.TabIndex = 11;
@@ -792,7 +792,7 @@
             // 
             this.label21.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(35, 128);
+            this.label21.Location = new System.Drawing.Point(34, 128);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(71, 18);
             this.label21.TabIndex = 10;
@@ -812,7 +812,7 @@
             // 
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(174, 18);
+            this.label13.Location = new System.Drawing.Point(173, 18);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(71, 18);
             this.label13.TabIndex = 2;
@@ -822,7 +822,7 @@
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(463, 18);
+            this.label14.Location = new System.Drawing.Point(462, 18);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(98, 18);
             this.label14.TabIndex = 3;
@@ -832,7 +832,7 @@
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(432, 73);
+            this.label15.Location = new System.Drawing.Point(431, 73);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(161, 18);
             this.label15.TabIndex = 4;
@@ -841,7 +841,7 @@
             // txt_method
             // 
             this.txt_method.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_method.Location = new System.Drawing.Point(144, 68);
+            this.txt_method.Location = new System.Drawing.Point(143, 68);
             this.txt_method.Name = "txt_method";
             this.txt_method.Size = new System.Drawing.Size(132, 28);
             this.txt_method.TabIndex = 5;
@@ -867,7 +867,7 @@
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(44, 18);
+            this.label11.Location = new System.Drawing.Point(43, 18);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 18);
             this.label11.TabIndex = 0;
@@ -877,7 +877,7 @@
             // 
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(441, 128);
+            this.label20.Location = new System.Drawing.Point(440, 128);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(143, 18);
             this.label20.TabIndex = 8;
@@ -952,7 +952,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "developer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "developer";
+            this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.developer_FormClosing);
             this.panel_assignBug.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
