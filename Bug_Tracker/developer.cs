@@ -11,6 +11,8 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Text.RegularExpressions;
 using LibGit2Sharp;
+using System.Net.Mail;
+using System.Net;
 
 namespace Bug_Tracker
 {
@@ -331,7 +333,32 @@ namespace Bug_Tracker
                 string newcom1 = "UPDATE bug SET state = 'Completed',completed_date = '"+sqlFormattedDate+ "', update_date = '"+sqlFormattedDate+"' WHERE BugID = '" + comboBox4.Text + "' ";
                 SqlCommand cmd1 = new SqlCommand(newcom1, con);
                 cmd1.ExecuteNonQuery();
-                
+                try
+                {
+                    SqlCommand da1 = new SqlCommand("Select * FROM buger where name = (select tester from bug where BugID = '" + comboBox4.Text + "')", con);
+                    SqlDataReader dr1 = da1.ExecuteReader();
+                    if (dr1.Read())
+                    {
+                        SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                        client.EnableSsl = true;
+                        client.Timeout = 10000;
+                        client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                        client.UseDefaultCredentials = false;
+                        client.Credentials = new NetworkCredential("reggiecril0618@gmail.com", "Cloud10080618");
+                        MailMessage msg = new MailMessage();
+                        MessageBox.Show(dr1["email"].ToString());
+                        msg.To.Add(dr1["email"].ToString());
+                        msg.From = new MailAddress("reggiecril0618@gmail.com");
+                        msg.Subject = "hi " + dr1["name"].ToString();
+                        msg.Body = label3.Text+" just completed you tested bug, please check it out if you want:)";
+                        client.Send(msg);
+                        MessageBox.Show("success");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 load();
             }
         }

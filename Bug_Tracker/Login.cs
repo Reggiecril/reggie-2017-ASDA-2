@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using LibGit2Sharp;
-using System.Net.Mail;
+
 
 namespace Bug_Tracker
 {
@@ -110,8 +110,6 @@ namespace Bug_Tracker
         /// </example>
         private void btn_developer_login_Click(object sender, EventArgs e)
         {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-            client.EnableSsl
             using (SqlConnection con = new SqlConnection(connection))
             {
                 SqlDataAdapter da = new SqlDataAdapter("Select name From buger where email = '" + textBox1.Text + "' and password= '" + textBox2.Text + "' and role = 'developer'", con);
