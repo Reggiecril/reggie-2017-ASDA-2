@@ -104,6 +104,8 @@
             this.btn_audit = new System.Windows.Forms.Button();
             this.combo_audit = new System.Windows.Forms.ComboBox();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label_prioity = new System.Windows.Forms.Label();
             this.panel_assignBug.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel_checkBugs.SuspendLayout();
@@ -358,6 +360,8 @@
             // 
             this.panel_reminder.BackColor = System.Drawing.Color.White;
             this.panel_reminder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_reminder.Controls.Add(this.label_prioity);
+            this.panel_reminder.Controls.Add(this.label30);
             this.panel_reminder.Controls.Add(this.label25);
             this.panel_reminder.Controls.Add(this.button2);
             this.panel_reminder.Controls.Add(this.label29);
@@ -756,7 +760,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.46619F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 216F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 217F));
             this.tableLayoutPanel1.Controls.Add(this.label_project, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label21, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 1);
@@ -822,7 +826,7 @@
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(462, 18);
+            this.label14.Location = new System.Drawing.Point(461, 18);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(98, 18);
             this.label14.TabIndex = 3;
@@ -832,7 +836,7 @@
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(431, 73);
+            this.label15.Location = new System.Drawing.Point(430, 73);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(161, 18);
             this.label15.TabIndex = 4;
@@ -843,13 +847,13 @@
             this.txt_method.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_method.Location = new System.Drawing.Point(143, 68);
             this.txt_method.Name = "txt_method";
-            this.txt_method.Size = new System.Drawing.Size(132, 28);
+            this.txt_method.Size = new System.Drawing.Size(131, 28);
             this.txt_method.TabIndex = 5;
             // 
             // txt_classFile
             // 
             this.txt_classFile.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_classFile.Location = new System.Drawing.Point(608, 13);
+            this.txt_classFile.Location = new System.Drawing.Point(607, 13);
             this.txt_classFile.Name = "txt_classFile";
             this.txt_classFile.Size = new System.Drawing.Size(191, 28);
             this.txt_classFile.TabIndex = 6;
@@ -857,7 +861,7 @@
             // txt_startLineNumber
             // 
             this.txt_startLineNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_startLineNumber.Location = new System.Drawing.Point(609, 68);
+            this.txt_startLineNumber.Location = new System.Drawing.Point(608, 68);
             this.txt_startLineNumber.Name = "txt_startLineNumber";
             this.txt_startLineNumber.Size = new System.Drawing.Size(189, 28);
             this.txt_startLineNumber.TabIndex = 7;
@@ -877,7 +881,7 @@
             // 
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(440, 128);
+            this.label20.Location = new System.Drawing.Point(439, 128);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(143, 18);
             this.label20.TabIndex = 8;
@@ -886,7 +890,7 @@
             // txt_endLineNumber
             // 
             this.txt_endLineNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_endLineNumber.Location = new System.Drawing.Point(609, 123);
+            this.txt_endLineNumber.Location = new System.Drawing.Point(608, 123);
             this.txt_endLineNumber.Name = "txt_endLineNumber";
             this.txt_endLineNumber.Size = new System.Drawing.Size(189, 28);
             this.txt_endLineNumber.TabIndex = 9;
@@ -940,6 +944,24 @@
             this.dataGridView4.Size = new System.Drawing.Size(903, 365);
             this.dataGridView4.TabIndex = 0;
             this.dataGridView4.Visible = false;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(168, 44);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(62, 18);
+            this.label30.TabIndex = 9;
+            this.label30.Text = "Level:";
+            // 
+            // label_prioity
+            // 
+            this.label_prioity.AutoSize = true;
+            this.label_prioity.Location = new System.Drawing.Point(225, 44);
+            this.label_prioity.Name = "label_prioity";
+            this.label_prioity.Size = new System.Drawing.Size(62, 18);
+            this.label_prioity.TabIndex = 10;
+            this.label_prioity.Text = "Medium";
             // 
             // developer
             // 
@@ -1052,5 +1074,7 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label_prioity;
+        private System.Windows.Forms.Label label30;
     }
 }

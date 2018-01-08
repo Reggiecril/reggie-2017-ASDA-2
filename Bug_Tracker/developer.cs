@@ -64,11 +64,24 @@ namespace Bug_Tracker
                     {
                         label26.Text = (dr["tester"].ToString());
                         label28.Text = (dr["start_date"].ToString());
+                        label_prioity.Text = (dr["priority"].ToString());
                     }
-                if (label26.Text == "")
-                {
-                    panel_reminder.Hide();
-                }
+                    if (label_prioity.Text == "High")
+                    {
+                        label_prioity.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else if (label_prioity.Text == "Medium")
+                    {
+                        label_prioity.ForeColor = System.Drawing.Color.Yellow;
+                    }
+                    else if (label_prioity.Text == "Low")
+                    {
+                        label_prioity.ForeColor = System.Drawing.Color.Green;
+                    }
+                    else if (label26.Text == "")
+                    {
+                        panel_reminder.Hide();
+                    }
                 
             }
             
@@ -346,13 +359,12 @@ namespace Bug_Tracker
                         client.UseDefaultCredentials = false;
                         client.Credentials = new NetworkCredential("reggiecril0618@gmail.com", "Cloud10080618");
                         MailMessage msg = new MailMessage();
-                        MessageBox.Show(dr1["email"].ToString());
                         msg.To.Add(dr1["email"].ToString());
                         msg.From = new MailAddress("reggiecril0618@gmail.com");
                         msg.Subject = "hi " + dr1["name"].ToString();
                         msg.Body = label3.Text+" just completed you tested bug, please check it out if you want:)";
                         client.Send(msg);
-                        MessageBox.Show("success");
+                        MessageBox.Show("Sent reminder email to tester!");
                     }
                 }
                 catch (Exception ex)
@@ -569,7 +581,7 @@ namespace Bug_Tracker
         /// <summary>
         /// sytnax color
         /// </summary>
-        public Regex keyWordsBlue = new Regex("using| if | then | else| fi| true| while| do| done| set| export| bool| break| case| class| const| for| foreach| goto| in| void |if\n|then\n| else\n|fi\n|true\n|while\n|do\n|done\n|set\n|export\n|bool\n|break\n|case\n|class\n|const\n|for\n|foreach\n|goto\n|in\n|public void\n| public| private| protected|partial|namespace |string | this|new |object |foreach |var |null|DataGridViewRow |SqlDataReader |SqlCommand ");
+        public Regex keyWordsBlue = new Regex("using| if | then | else| fi| true| while|double | done| set| export| bool| break| case| class| const| for| foreach| goto| in| void |if\n|then\n| else\n|fi\n|true\n|while\n|do\n|done\n|set\n|export\n|bool\n|break\n|case\n|class\n|const\n|for\n|foreach\n|goto\n|in\n|public void\n| public| private| protected|partial|namespace |string | this|new |object |foreach |var |null|DataGridViewRow |SqlDataReader |SqlCommand ");
         /// <summary>
         /// sytnax color .
         /// </summary>
